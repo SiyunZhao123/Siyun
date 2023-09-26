@@ -47,20 +47,22 @@ console.log("Symptoms:", hospital.patients[2].symptoms.join(", "));
 
 
 function showPatients(hospital) {
-    let str = "<h1>" + hospital.name + "</h1>";
+    let showHtml = "<h1>" + hospital.name + "</h1>";
   
-    hospital.patients.forEach((patient) => {
-      str += "<h2>" + patient.fullName + ', ' + patient.dateOfBirth + "</h2>";
-      str += "<ul>";
-  
-      patient.symptoms.forEach((symptom) => {
-        str += "<li>" + symptom + "</li>";
-      });
-  
-      str += "</ul>";
-    });
-  
-    return str;
+    for (let i = 0; i < Hospital.patients.length; i++) {
+		let Patients = Hospital.patients[i];
+		showHtml += '<h2>' + Patients.fullName + ', ' + Patients.dateOfBirth + '</h2>';
+		showHtml += '<ul>';
+	
+		for (let j = 0; j < Patients.symptoms.length; j++) {
+			let symptom = Patients.symptoms[j];
+			showHtml += '<li>' + symptom.description + '</li>';
+		}
+	
+		showHtml += '</ul>';
+	}
+
+	return showHtml;
   }
   
   console.log(showPatients(hospital));
